@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="stylesheet" href="/css/rubiks.css">
+    <link rel="stylesheet" href="/css/header.css">
+  </head>
+  <body>
+    <header class="header-container">
+      <h1 class="h1-title">rubiks_cube</h1>
+      <div class="header-image-container">
+        <a href="https://github.com/FabienCont" target="_blank">
+          <img class="image-github"  src="<%=require('assets/github-mark.png')%>" alt="my github profile" />
+        </a>
+      </div>
+    </header>
+<div class="scene_container">
+  <div class="rubiks_cube">
+    <% for(var i=0; i<28; i++) {%>
+      <%
+        var classSuffixe=i;
+        if(i==0) classSuffixe="center";
+      %>
+      <div class="cube_container cube_container_<%= classSuffixe %>">
+        <figure class="cube">
+        <section class="cube_face cube_face_1"><span class="cube-face-label-number"><!--1--></span></section>
+        <section class="cube_face cube_face_2"><span class="cube-face-label-number"><!--2--></span></section>
+        <section class="cube_face cube_face_3"><span class="cube-face-label-number"><!--3--></span></section>
+        <section class="cube_face cube_face_4"><span class="cube-face-label-number"><!--4--></span></section>
+        <section class="cube_face cube_face_5"><span class="cube-face-label-number"><!--5--></span></section>
+        <section class="cube_face cube_face_6"><span class="cube-face-label-number"><!--6--></span></section>
+      </figure>
+      </div>
+    <% } %>
+  </div>
+</div>
+</body>
+</html>

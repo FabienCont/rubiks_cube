@@ -1,0 +1,23 @@
+.header-container{
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.h1-title{
+  user-select: none;
+  margin: 0 0 0 3rem ;
+  transform: rotateY(30deg) rotateX(-25deg);
+  font-size:3rem;
+  transform-style: preserve-3d;
+}
+
+.header-image-container{
+user-select: none;
+    margin: 0 3rem 0 0 ;
+  max-width: 10rem;
+  max-height: 10rem;
+}
