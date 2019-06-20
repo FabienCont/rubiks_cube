@@ -1,0 +1,53 @@
+
+.header-container{
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+@media only screen and (min-width : $break-small) {
+  .header-container{
+    margin-top: 3rem;
+  }
+}
+
+.h1-title{
+  user-select: none;
+  margin: 0 0 0 1rem ;
+  transform: rotateY(30deg) rotateX(-25deg);
+  font-size:1.5rem;
+  transform-style: preserve-3d;
+}
+
+@media only screen and (min-width : $break-small) {
+  .h1-title{
+    margin: 0 0 0 3rem ;
+    font-size:3rem;
+  }
+}
+
+.header-image-container{
+user-select: none;
+    margin: 0 1rem 0 0 ;
+}
+
+@media only screen and (min-width : $break-small) {
+  .header-image-container{
+  margin-right: 3rem;
+  }
+}
+
+.image-github{
+  max-width: 3rem;
+  max-height: 3rem;
+}
+
+@media only screen and (min-width : $break-small) {
+  .image-github{
+    max-width: 7rem;
+    max-height: 7rem;
+  }
+}

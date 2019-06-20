@@ -1,5 +1,4 @@
-import './header.scss';
-import './rubiks.scss';
+import './scss/main.scss';
 
 if ('serviceWorker' in navigator) {
  window.addEventListener('load', () => {
@@ -10,10 +9,9 @@ if ('serviceWorker' in navigator) {
    });
  });
 }
-// Add the image to our existing div.
-  var dragItem=document.querySelector(".rubiks_cube");
-  var container =document.querySelector("body");
 
+  var container =document.querySelector("body");
+var dragItem=document.querySelector(".rubiks_cube");;
   var mode="rotate";
    var active = false;
    var currentX;
@@ -32,7 +30,6 @@ if ('serviceWorker' in navigator) {
    container.addEventListener("mousemove", drag, false);
 
    function dragStart(e) {
-     console.log("dragStart")
      if (e.type === "touchstart") {
        initialX = e.touches[0].clientX - xOffset;
        initialY = e.touches[0].clientY - yOffset;
@@ -41,9 +38,7 @@ if ('serviceWorker' in navigator) {
        initialY = e.clientY - yOffset;
      }
 
- console.log("dragStart target="+e.target)
-    if (e.target === dragItem||dragItem.contains(e.target)) {
-        console.log("dragStart active")
+     if (e.target === dragItem|| container.contains(e.target) ||e.target === dragItem ) {
        active = true;
      }
    }
@@ -53,8 +48,7 @@ if ('serviceWorker' in navigator) {
      initialY = currentY;
 
      active = false;
-      console.log("dragEnd")
-   }
+  }
 
    function drag(e) {
      if (active) {
@@ -76,7 +70,6 @@ if ('serviceWorker' in navigator) {
        }else {
          setRotate(currentX, currentY, dragItem);
        }
-        console.log("drag x="+currentX+"; y="+currentY);
      }
    }
 
