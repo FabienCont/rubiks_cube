@@ -17,25 +17,32 @@
         </a>
       </div>
     </header>
+
+    <div class="icon">
+      <div class="arrow"></div>
+    </div>
 <div class="scene_container">
-  <div class="rubiks_cube">
-    <% for(var i=0; i<28; i++) {%>
+  <% for(var c=0; c<1; c++) {%>
+  <div class="rubiks_cube rubiks_cube_<%= c %>">
+    <% for(var i=0; i<27; i++) {%>
       <%
         var classSuffixe=i;
-        if(i==0) classSuffixe="center";
       %>
       <div class="cube_container cube_container_<%= classSuffixe %>">
-        <figure class="cube">
-        <section class="cube_face cube_face_1"><span class="cube-face-label-number"><!--1--></span></section>
-        <section class="cube_face cube_face_2"><span class="cube-face-label-number"><!--2--></span></section>
-        <section class="cube_face cube_face_3"><span class="cube-face-label-number"><!--3--></span></section>
-        <section class="cube_face cube_face_4"><span class="cube-face-label-number"><!--4--></span></section>
-        <section class="cube_face cube_face_5"><span class="cube-face-label-number"><!--5--></span></section>
-        <section class="cube_face cube_face_6"><span class="cube-face-label-number"><!--6--></span></section>
-      </figure>
+        <div class="cube_container_position cube_container_position_<%= classSuffixe %>">
+          <figure class="cube">
+            <section class="cube_face cube_face_0"></section>
+            <section class="cube_face cube_face_1"></section>
+            <section class="cube_face cube_face_2"></section>
+            <section class="cube_face cube_face_3"></section>
+            <section class="cube_face cube_face_4"></section>
+            <section class="cube_face cube_face_5"></section>
+          </figure>
+        </div>
       </div>
     <% } %>
   </div>
+<% } %>
 </div>
 </body>
 </html>

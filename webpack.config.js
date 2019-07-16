@@ -62,7 +62,8 @@ var config = {
    resolve: {
     alias: {
       assets: path.resolve(__dirname, 'src/assets/'),
-      components: path.resolve(__dirname, 'src/components/'),
+      scss:path.resolve(__dirname, 'src/scss/'),
+      js: path.resolve(__dirname, 'src/js/'),
     }
   }
 };
