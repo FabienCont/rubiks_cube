@@ -1,4 +1,5 @@
-#Rubiks_cube
+Rubiks_cube
+==============
 
 ## Demo
 
