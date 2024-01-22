@@ -1,48 +1,101 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel=”apple-touch-icon” href="<%=require('assets/rubicsCubeFaviconx150.png')%>" sizes="150x150">
-    <link rel="icon" type="image/png" href="<%=require('assets/rubicsCubeFaviconx64.png')%>" sizes="64x364">
-  </head>
-  <body>
-    <header class="header-container">
-      <h1 class="h1-title">rubiks_cube</h1>
-      <div class="header-image-container">
-        <a href="https://github.com/FabienCont" target="_blank">
-          <img class="image-github"  src="<%=require('assets/github-mark.png')%>" alt="my github profile" />
-        </a>
-      </div>
-    </header>
 
-    <div class="icon">
-      <div class="arrow"></div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel=”apple-touch-icon” href="<%=require('assets/rubicsCubeFaviconx150.png')%>" sizes="150x150">
+  <link rel="icon" type="image/png" href="<%=require('assets/rubicsCubeFaviconx64.png')%>" sizes="64x364">
+</head>
+
+<body>
+  <header class="header-container">
+    <h1 class="h1-title">rubiks_cube</h1>
+    <div class="header-image-container">
+      <a href="https://github.com/FabienCont" target="_blank">
+        <img class="image-github" src="<%=require('assets/github-mark.png')%>" alt="my github profile" />
+      </a>
     </div>
-<div class="scene_container">
-  <% for(var c=0; c<1; c++) {%>
-  <div class="rubiks_cube rubiks_cube_<%= c %>">
-    <% for(var i=0; i<27; i++) {%>
-      <%
-        var classSuffixe=i;
-      %>
-      <div class="cube_container cube_container_<%= classSuffixe %>">
-        <div class="cube_container_position cube_container_position_<%= classSuffixe %>">
-          <figure class="cube">
-            <section class="cube_face cube_face_0"></section>
-            <section class="cube_face cube_face_1"></section>
-            <section class="cube_face cube_face_2"></section>
-            <section class="cube_face cube_face_3"></section>
-            <section class="cube_face cube_face_4"></section>
-            <section class="cube_face cube_face_5"></section>
-          </figure>
-        </div>
+  </header>
+  <div class="scene_container">
+    <div class="btns_helper_container">
+      <button class="btn_helper btn_reset hide">
+        Reset
+      </button>
+      <button class="btn_helper btn_scramble">
+        Scramble
+      </button>
+      <button class="btn_helper btn_center">
+        Center
+      </button>
+    </div>
+    <div class="rubiks_cube_container">
+      <div class="rubiks_cube rubiks_cube_0">
+        <% for(var i=0; i<27; i++) {%>
+          <% var classSuffixe=i; %>
+            <div class="cube_container cube_container_<%= classSuffixe %>" data-pos-init="<%= i%>" data-pos="<%= i%>">
+              <div class="cube_container_position cube_container_position_<%= classSuffixe %>">
+                <!-- <span><%= i%></span> -->
+                <figure class="cube">
+                  <section class="cube-pivot">
+                    <section class="cube_face cube_face_0"></section>
+                    <section class="cube_face cube_face_1"></section>
+                    <section class="cube_face cube_face_2"></section>
+                    <section class="cube_face cube_face_3"></section>
+                    <section class="cube_face cube_face_4"></section>
+                    <section class="cube_face cube_face_5"></section>
+                  </section>
+                </figure>
+              </div>
+            </div>
+            <% } %>
       </div>
-    <% } %>
+    </div>
+    <div class="ui_container">
+      <div class="btns_move_grid">
+        <button class="btn_move" data-id="U">
+          U
+        </button>
+        <button class="btn_move" data-id="U'">
+          U'
+        </button>
+        <button class="btn_move" data-id="D">
+          D
+        </button>
+        <button class="btn_move" data-id="D'">
+          D'
+        </button>
+        <button class="btn_move" data-id="F">
+          F
+        </button>
+        <button class="btn_move" data-id="F'">
+          F'
+        </button>
+        <button class="btn_move" data-id="B">
+          B
+        </button>
+        <button class="btn_move" data-id="B'">
+          B'
+        </button>
+        <button class="btn_move" data-id="R">
+          R
+        </button>
+        <button class="btn_move" data-id="R'">
+          R'
+        </button>
+        <button class="btn_move" data-id="L">
+          L
+        </button>
+        <button class="btn_move" data-id="L'">
+          L'
+        </button>
+      </div>
+    </div>
   </div>
-<% } %>
-</div>
 </body>
+
 </html>

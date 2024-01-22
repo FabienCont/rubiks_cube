@@ -1,41 +1,50 @@
-
-
-body,html{
-  background-color:$background-color;
-  margin:0;border:0;padding:0;
+body,
+html {
+  background-color: $background-color;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
   height: 100%;
+}
+
+.scene_container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  touch-action: none;
+  position: relative;
   overflow: hidden;
 }
 
-.scene_container{
-    touch-action: none;
-    display: flex;
-    margin:6rem 0 2rem 0;
-    width: 100%;
-    height: 100%;
-    transform:  translate3d(0, 0, 0);
-    transform-style: preserve-3d;
-}
 
 
-@media only screen and (min-width : $break-small) {
-  .scene_container{
-    margin:10rem 0 5rem 0;
-  }
-}
-
-
-.rubiks_cube{
-  //animation: rotate 6s infinite;
-  touch-action: none;
-
-  position: relative;
-  transform-style:preserve-3d;
+.rubiks_cube_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 70%;
-  margin:0;
-  top:0;
-  left:0;
+  max-height: 400px;
+  min-height: 160px;
+  transform: translate3d(0, 0, 0);
+  transform-style: preserve-3d;
+  touch-action: none;
+}
+
+.rubiks_cube {
+  touch-action: none;
+  position: relative;
+  transform-style: preserve-3d;
+  transition-duration: $transform-time-cube;
+  max-width: 0;
+  height: 100%;
+  margin: 0;
+  top: 0;
+  left: 0;
   right: 0;
   bottom: 0;
 
@@ -48,106 +57,153 @@ body,html{
 }
 
 
-.cube_container{
-  height: $square-container;
-  width:$square-container;
-  transform-style:preserve-3d;
+.cube_container {
+  height: 0;
+  width: 0;
+  transform-style: preserve-3d;
   transition-property: transform;
-  transition:transform .8s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  transition-duration: 0.5s;
+  transition: transform $transform-time-cube cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition-duration: $transform-time-cube;
   touch-action: none;
-  position:absolute;
-  margin:auto;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
-
-.cube_container_position{
-  transform-style:preserve-3d;
-  height: $square-container;
-  width:$square-container;
+.drag.rubiks_cube{
+  transition-duration: $transform-time-cube-drag;
 }
 
-.rubiks_cube_0{
-  @for $i from 0 through 26{
+.drag>.cube_container{
+  transition-duration: $transform-time-cube-drag;
+}
 
-    @if $i<9{
-      .cube_container_#{$i} .cube_face_3{
-        background-color: $white;
+.cube_container_position {
+  transform-style: preserve-3d;
+  height: 0;
+  width: 0;
+}
+
+.rubiks_cube_0 {
+  @for $i from 0 through 26 {
+
+    @if $i<9 {
+      .cube_container_#{$i} .cube_face_3 {
+        background-color: $white0;
       }
     }
 
-  @if  $i%9<3{
-    .cube_container_#{$i} .cube_face_0{
-     background-color: $red !important;
-    }
-  }
-
-
-  @if ($i +1)%3==0{
-    .cube_container_#{$i} .cube_face_4{
-      background-color:$blue;
-    }
-  }
-
-    @if ($i)%3==0{
-      .cube_container_#{$i} .cube_face_2{
-        background-color:$green;
+    @if $i%9<3 {
+      .cube_container_#{$i} .cube_face_0 {
+        background-color: $red0 !important;
       }
     }
 
-    @if $i %9>5{
-      .cube_container_#{$i} .cube_face_5{
-        background-color:$orange;
+
+    @if ($i +1)%3==0 {
+      .cube_container_#{$i} .cube_face_4 {
+        background-color: $blue0;
       }
     }
 
-    @if $i>17{
-      .cube_container_#{$i} .cube_face_1{
-        background-color:$yellow;
+    @if ($i)%3==0 {
+      .cube_container_#{$i} .cube_face_2 {
+        background-color: $green0;
+      }
+    }
+
+    @if $i %9>5 {
+      .cube_container_#{$i} .cube_face_5 {
+        background-color: $orange0;
+      }
+    }
+
+    @if $i>17 {
+      .cube_container_#{$i} .cube_face_1 {
+        background-color: $yellow0;
       }
     }
   }
 }
 
-.rubiks_cube_1{
-  @for $i from 0 through 26{
-    @if $i<9{
-      .cube_container_#{$i} .cube_face_3{
+.rubiks_cube_1 {
+  @for $i from 0 through 26 {
+    @if $i<9 {
+      .cube_container_#{$i} .cube_face_3 {
         background-color: $white1;
       }
     }
 
-    @if ($i) %9<3{
-      .cube_container_#{$i} .cube_face_0{
-       background-color: $red1 !important;
+    @if ($i) %9<3 {
+      .cube_container_#{$i} .cube_face_0 {
+        background-color: $red1 !important;
       }
     }
 
-    @if ($i+1)%3==0{
-      .cube_container_#{$i} .cube_face_4{
-        background-color:$blue1;
+    @if ($i+1)%3==0 {
+      .cube_container_#{$i} .cube_face_4 {
+        background-color: $blue1;
       }
     }
 
-    @if ($i)%3==0{
-      .cube_container_#{$i} .cube_face_2{
-        background-color:$green1;
+    @if ($i)%3==0 {
+      .cube_container_#{$i} .cube_face_2 {
+        background-color: $green1;
       }
     }
 
-    @if ($i) %9>5{
-      .cube_container_#{$i} .cube_face_5{
-        background-color:$orange1;
+    @if ($i) %9>5 {
+      .cube_container_#{$i} .cube_face_5 {
+        background-color: $orange1;
       }
     }
 
-    @if $i>17{
-      .cube_container_#{$i} .cube_face_1{
-        background-color:$yellow1;
+    @if $i>17 {
+      .cube_container_#{$i} .cube_face_1 {
+        background-color: $yellow1;
+      }
+    }
+  }
+}
+  
+.rubiks_cube_2 {
+  @for $i from 0 through 26 {
+    @if $i<9 {
+      .cube_container_#{$i} .cube_face_3 {
+        background-color: $white2;
+      }
+    }
+
+    @if ($i) %9<3 {
+      .cube_container_#{$i} .cube_face_0 {
+        background-color: $red2 !important;
+      }
+    }
+
+    @if ($i+1)%3==0 {
+      .cube_container_#{$i} .cube_face_4 {
+        background-color: $blue2;
+      }
+    }
+
+    @if ($i)%3==0 {
+      .cube_container_#{$i} .cube_face_2 {
+        background-color: $green2;
+      }
+    }
+
+    @if ($i) %9>5 {
+      .cube_container_#{$i} .cube_face_5 {
+        background-color: $orange2;
+      }
+    }
+
+    @if $i>17 {
+      .cube_container_#{$i} .cube_face_1 {
+        background-color: $yellow2;
       }
     }
   }
@@ -156,173 +212,370 @@ body,html{
 
 
 //le plus proche en haut a gauche
-.cube_container_position_0{
+.cube_container_position_0 {
   transform: translateX(-$square-translation) translateY(-$square-translation) translateZ($square-translation);
 }
 
 //le plus proche au milieu en haut
-.cube_container_position_1{
+.cube_container_position_1 {
   transform: translateX(0) translateY(-$square-translation) translateZ($square-translation);
- }
+}
 
-  //le plus proche en haut a droite
-.cube_container_position_2{
+//le plus proche en haut a droite
+.cube_container_position_2 {
   transform: translateX($square-translation) translateY(-$square-translation) translateZ($square-translation);
- }
+}
 
-.cube_container_position_3{
+.cube_container_position_3 {
   transform: translateX(-$square-translation) translateY(-$square-translation) translateZ(0);
- }
+}
 
-.cube_container_position_4{
-  transform: translateX(0) translateY(-$square-translation) translateZ(0) ;
- }
-.cube_container_position_5{
+.cube_container_position_4 {
+  transform: translateX(0) translateY(-$square-translation) translateZ(0);
+}
+
+.cube_container_position_5 {
   transform: translateX($square-translation) translateY(-$square-translation) translateZ(0);
- }
-.cube_container_position_6{
-  transform: translateX(-$square-translation) translateY(-$square-translation) translateZ(-$square-translation);
- }
+}
 
-.cube_container_position_7{
+.cube_container_position_6 {
+  transform: translateX(-$square-translation) translateY(-$square-translation) translateZ(-$square-translation);
+}
+
+.cube_container_position_7 {
   transform: translateX(0) translateY(-$square-translation) translateZ(-$square-translation);
- }
-.cube_container_position_8{
+}
+
+.cube_container_position_8 {
   transform: translateX($square-translation) translateY(-$square-translation) translateZ(-$square-translation);
- }
-.cube_container_position_9{
+}
+
+.cube_container_position_9 {
   transform: translateX(-$square-translation) translateY(0) translateZ($square-translation);
- }
-.cube_container_position_10{
-  transform:  translateX(0) translateY(0) translateZ($square-translation);
- }
-.cube_container_position_11{
+}
+
+.cube_container_position_10 {
+  transform: translateX(0) translateY(0) translateZ($square-translation);
+}
+
+.cube_container_position_11 {
   transform: translateX($square-translation) translateY(0) translateZ($square-translation);
 
- }
-.cube_container_position_12{
+}
+
+.cube_container_position_12 {
   transform: translateX(-$square-translation) translateY(0) translateZ(0);
 
- }
-.cube_container_position_13{
+}
+
+.cube_container_position_13 {
   transform: translateX(0) translateY(0) translateZ(0);
- }
-.cube_container_position_14{
+}
+
+.cube_container_position_14 {
   transform: translateX($square-translation) translateY(0) translateZ(0);
- }
-.cube_container_position_15{
+}
+
+.cube_container_position_15 {
   transform: translateX(-$square-translation) translateY(0) translateZ(-$square-translation);
 
- }
-.cube_container_position_16{
-  transform:  translateX(0) translateY(0) translateZ(-$square-translation);
+}
 
- }
-.cube_container_position_17{
+.cube_container_position_16 {
+  transform: translateX(0) translateY(0) translateZ(-$square-translation);
+
+}
+
+.cube_container_position_17 {
   transform: translateX($square-translation) translateY(0) translateZ(-$square-translation);
 
- }
-.cube_container_position_18{
+}
+
+.cube_container_position_18 {
   transform: translateX(-$square-translation) translateY($square-translation) translateZ($square-translation);
 
- }
-.cube_container_position_19{
+}
+
+.cube_container_position_19 {
   transform: translateX(0) translateY($square-translation) translateZ($square-translation);
 
- }
-.cube_container_position_20{
+}
+
+.cube_container_position_20 {
   transform: translateX($square-translation) translateY($square-translation) translateZ($square-translation);
 
- }
-.cube_container_position_21{
+}
+
+.cube_container_position_21 {
   transform: translateX(-$square-translation) translateY($square-translation) translateZ(0);
 
- }
-.cube_container_position_22{
+}
+
+.cube_container_position_22 {
   transform: translateX(0) translateY($square-translation) translateZ(0);
 
- }
-.cube_container_position_23{
+}
+
+.cube_container_position_23 {
   transform: translateX($square-translation) translateY($square-translation) translateZ(0);
 
- }
-.cube_container_position_24{
-  transform: translateX(-$square-translation) translateY($square-translation) translateZ(-$square-translation);
- }
+}
 
-.cube_container_position_25{
+.cube_container_position_24 {
+  transform: translateX(-$square-translation) translateY($square-translation) translateZ(-$square-translation);
+}
+
+.cube_container_position_25 {
   transform: translateX(0) translateY($square-translation) translateZ(-$square-translation);
 
- }
-.cube_container_position_26{
-  transform: translateX($square-translation) translateY($square-translation) translateZ(-$square-translation);
- }
+}
 
-.cube{
-  transition: transform 1s;
-  margin:0;
-  transform-style:preserve-3d;
-  width: 100%;
-  height: 100%;
-  position:relative;
+.cube_container_position_26 {
+  transform: translateX($square-translation) translateY($square-translation) translateZ(-$square-translation);
+}
+
+.cube {
+  transition: transform $transform-time-cube;
+  margin: 0;
+  transform-style: preserve-3d;
+  width: 0px;
+  height: 0px;
+  position: relative;
   animation: fade-in-1 3s ease-in;
 }
 
-@keyframes fade-in-1 {
-    0% {
-      transform:scale3d(0,0,0);
-    }
+.cube-pivot {
+  transform: translate3d(-$square-size/2, -$square-size/2, 0);
+  transform-style: preserve-3d;
+}
 
-    100% {
-      transform:scale3d(1,1,1);
-    }
+@keyframes fade-in-1 {
+  0% {
+    transform: scale3d(0, 0, 0);
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
 }
 
 @keyframes fade-in {
-    0% {
-      width: 5%;height: 5%;
-    }
+  0% {
+    width: 5%;
+    height: 5%;
+  }
 
-    100% {
-      height: 99%;width: 99%;
-    }
+  100% {
+    height: 100%;
+    width: 100%;
+  }
 }
 
-.cube_face{
-  position:absolute;
-  width: 99%;
-  height: 99%;
-  box-shadow: 1px 1px 1px 1px $border_color;
+.cube_face {
+  position: absolute;
+  width: $square-size;
+  height: $square-size;
+  box-shadow: 0px 0px 1px 1px $border_color;
   //border: solid 1px;
-  background-color:$unused_face_color;
+  background-color: $unused_face_color;
   border-radius: 4px;
   backface-visibility: hidden;
 }
 
 
-.cube_face_0{
+.cube_face_0 {
   transform: rotateY(0deg) translateZ($square-size/2);
   //background-color:rgba(0, 0, 255, 0.5);
-  }
+}
 
-.cube_face_1{
-  transform:rotateX(-90deg)translateZ($square-size/2);
+.cube_face_1 {
+  transform: rotateX(-90deg)translateZ($square-size/2);
   //background-color:rgba(255, 0, 0, 0.5);
 }
 
-.cube_face_2{
+.cube_face_2 {
   transform: rotateY(-90deg)translateZ($square-size/2);
-   //background-color:rgba(0,255, 0, 0.5)
+  //background-color:rgba(0,255, 0, 0.5)
 }
-.cube_face_3{
+
+.cube_face_3 {
   transform: rotateX(90deg) translateZ($square-size/2);
   //background-color:rgba(0,255, 255, 0.5);
 }
-.cube_face_4{
-transform:rotateY(90deg) translateZ($square-size/2);
- //background-color:rgba(255,255, 0, 0.5)
+
+.cube_face_4 {
+  transform: rotateY(90deg) translateZ($square-size/2);
+  //background-color:rgba(255,255, 0, 0.5)
 }
-.cube_face_5{
+
+.cube_face_5 {
   transform: rotateY(180deg) translateZ($square-size/2);
- //background-color:rgba(255,0, 255, 0.2)
+  //background-color:rgba(255,0, 255, 0.2)
+}
+
+
+@media only screen and (min-width : $break-small) {
+
+  .rubiks_cube_container {
+    max-height: max-content;
+    flex: 2;
+  }
+
+  .cube-pivot {
+    transform: translate3d(-$square-size-medium/2, -$square-size-medium/2, 0);
+  }
+
+  //le plus proche en haut a gauche
+  .cube_container_position_0 {
+    transform: translateX(-$square-translation-medium) translateY(-$square-translation-medium) translateZ($square-translation-medium);
+  }
+
+  //le plus proche au milieu en haut
+  .cube_container_position_1 {
+    transform: translateX(0) translateY(-$square-translation-medium) translateZ($square-translation-medium);
+  }
+
+  //le plus proche en haut a droite
+  .cube_container_position_2 {
+    transform: translateX($square-translation-medium) translateY(-$square-translation-medium) translateZ($square-translation-medium);
+  }
+
+  .cube_container_position_3 {
+    transform: translateX(-$square-translation-medium) translateY(-$square-translation-medium) translateZ(0);
+  }
+
+  .cube_container_position_4 {
+    transform: translateX(0) translateY(-$square-translation-medium) translateZ(0);
+  }
+
+  .cube_container_position_5 {
+    transform: translateX($square-translation-medium) translateY(-$square-translation-medium) translateZ(0);
+  }
+
+  .cube_container_position_6 {
+    transform: translateX(-$square-translation-medium) translateY(-$square-translation-medium) translateZ(-$square-translation-medium);
+  }
+
+  .cube_container_position_7 {
+    transform: translateX(0) translateY(-$square-translation-medium) translateZ(-$square-translation-medium);
+  }
+
+  .cube_container_position_8 {
+    transform: translateX($square-translation-medium) translateY(-$square-translation-medium) translateZ(-$square-translation-medium);
+  }
+
+  .cube_container_position_9 {
+    transform: translateX(-$square-translation-medium) translateY(0) translateZ($square-translation-medium);
+  }
+
+  .cube_container_position_10 {
+    transform: translateX(0) translateY(0) translateZ($square-translation-medium);
+  }
+
+  .cube_container_position_11 {
+    transform: translateX($square-translation-medium) translateY(0) translateZ($square-translation-medium);
+
+  }
+
+  .cube_container_position_12 {
+    transform: translateX(-$square-translation-medium) translateY(0) translateZ(0);
+
+  }
+
+  .cube_container_position_13 {
+    transform: translateX(0) translateY(0) translateZ(0);
+  }
+
+  .cube_container_position_14 {
+    transform: translateX($square-translation-medium) translateY(0) translateZ(0);
+  }
+
+  .cube_container_position_15 {
+    transform: translateX(-$square-translation-medium) translateY(0) translateZ(-$square-translation-medium);
+
+  }
+
+  .cube_container_position_16 {
+    transform: translateX(0) translateY(0) translateZ(-$square-translation-medium);
+
+  }
+
+  .cube_container_position_17 {
+    transform: translateX($square-translation-medium) translateY(0) translateZ(-$square-translation-medium);
+
+  }
+
+  .cube_container_position_18 {
+    transform: translateX(-$square-translation-medium) translateY($square-translation-medium) translateZ($square-translation-medium);
+
+  }
+
+  .cube_container_position_19 {
+    transform: translateX(0) translateY($square-translation-medium) translateZ($square-translation-medium);
+
+  }
+
+  .cube_container_position_20 {
+    transform: translateX($square-translation-medium) translateY($square-translation-medium) translateZ($square-translation-medium);
+
+  }
+
+  .cube_container_position_21 {
+    transform: translateX(-$square-translation-medium) translateY($square-translation-medium) translateZ(0);
+
+  }
+
+  .cube_container_position_22 {
+    transform: translateX(0) translateY($square-translation-medium) translateZ(0);
+
+  }
+
+  .cube_container_position_23 {
+    transform: translateX($square-translation-medium) translateY($square-translation-medium) translateZ(0);
+
+  }
+
+  .cube_container_position_24 {
+    transform: translateX(-$square-translation-medium) translateY($square-translation-medium) translateZ(-$square-translation-medium);
+  }
+
+  .cube_container_position_25 {
+    transform: translateX(0) translateY($square-translation-medium) translateZ(-$square-translation-medium);
+
+  }
+
+  .cube_container_position_26 {
+    transform: translateX($square-translation-medium) translateY($square-translation-medium) translateZ(-$square-translation-medium);
+  }
+
+  
+  .cube_face {
+    width: $square-size-medium;
+    height: $square-size-medium;
+  }
+
+  .cube_face_0 {
+    transform: rotateY(0deg) translateZ($square-size-medium/2);
+  }
+  
+  .cube_face_1 {
+    transform: rotateX(-90deg)translateZ($square-size-medium/2);
+  }
+  
+  .cube_face_2 {
+    transform: rotateY(-90deg)translateZ($square-size-medium/2);
+  }
+  
+  .cube_face_3 {
+    transform: rotateX(90deg) translateZ($square-size-medium/2);
+  }
+  
+  .cube_face_4 {
+    transform: rotateY(90deg) translateZ($square-size-medium/2);
+  }
+  
+  .cube_face_5 {
+    transform: rotateY(180deg) translateZ($square-size-medium/2);
+  }
+  
 }

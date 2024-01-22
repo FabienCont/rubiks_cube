@@ -1,6 +1,6 @@
 const rubiksCubeModel={
-   rotateX:0,
-   rotateY:0,
+   rotateX:45,
+   rotateY:35,
    childCubes:[
      {
        position:0,

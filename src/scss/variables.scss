@@ -1,19 +1,21 @@
-$break-small: 500px;
+$break-small: 600px;
 $break-large: 1200px;
 
-$square-container:3rem;
-$square-translation:3.7rem;
-$square-size:3rem;
+$square-translation:48px;
+$square-size:32px;
 
+$square-translation-medium:64px;
+$square-size-medium:48px;
 
+$transform-time-cube: .4s;
+$transform-time-cube-drag: 0s;
 
-
-$white:white;
-$red:red;
-$blue:blue;
-$green:green;
-$orange:orange;
-$yellow:yellow;
+$white0:white;
+$red0:red;
+$blue0:blue;
+$green0:green;
+$orange0:orange;
+$yellow0:yellow;
 
 $white1:white;
 $red1:red;
@@ -22,6 +24,12 @@ $green1:#3df749;
 $orange1:orange;
 $yellow1:yellow;
 
+$white2:white;
+$red2:rgb(206, 96, 71);
+$blue2:#4794b3;
+$green2:#66c96d;
+$orange2:rgb(210, 141, 36);
+$yellow2:rgb(178, 178, 41);
 
 $background-color:#f3f3f3;
 $unused_face_color:black;

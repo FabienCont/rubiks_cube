@@ -1,4 +1,9 @@
 @import 'variables.scss';
 @import 'rubiks.scss';
 @import 'header.scss';
-//@import 'arrow.scss'
+@import 'ui.scss';
+
+
+.hide{
+    display: none;
+}
