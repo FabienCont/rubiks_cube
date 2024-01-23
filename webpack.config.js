@@ -18,7 +18,6 @@ module.exports = (env, argv) => {
       }),
       new CopyPlugin({
         patterns: [
-          { from: "./src/assets/github-mark.png", to: "" },
           { from: "./src/assets/manifest.json", to: "" },
           { from: "./src/assets/rubicsCubeFaviconx150.png", to: "" },
           { from: "./src/assets/rubicsCubeFaviconx96.png", to: "" },

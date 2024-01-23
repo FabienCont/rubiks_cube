@@ -3,17 +3,17 @@
     "name": "Rubik's cube",
     "icons": [
       {
-        "src": "rubicsCubeFaviconx64.PNG",
+        "src": "rubicsCubeFaviconx64.png",
         "sizes": "64x64 32x32 24x24 16x16",
         "type": "image/png"
       },
       {
-        "src": "rubicsCubeFaviconx96.PNG",
+        "src": "rubicsCubeFaviconx96.png",
         "type": "image/png",
         "sizes": "96x96"
       },
       {
-        "src": "rubicsCubeFaviconx150.PNG",
+        "src": "rubicsCubeFaviconx150.png",
         "type": "image/png",
         "sizes": "192x192 150x150 512x512"
       }
