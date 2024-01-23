@@ -1,0 +1,25 @@
+{
+    "short_name": "Rubik's cube",
+    "name": "Rubik's cube",
+    "icons": [
+      {
+        "src": "rubicsCubeFaviconx64.PNG",
+        "sizes": "64x64 32x32 24x24 16x16",
+        "type": "image/png"
+      },
+      {
+        "src": "rubicsCubeFaviconx96.PNG",
+        "type": "image/png",
+        "sizes": "96x96"
+      },
+      {
+        "src": "rubicsCubeFaviconx150.PNG",
+        "type": "image/png",
+        "sizes": "192x192 150x150 512x512"
+      }
+    ],
+    "start_url": "/rubiks_cube/",
+    "display": "standalone",
+    "theme_color": "#dedcd7",
+    "background_color": "#dedcd7"
+  }

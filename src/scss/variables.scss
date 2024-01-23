@@ -1,46 +1,77 @@
 $break-small: 600px;
-$break-large: 1200px;
+$break-medium: 800px;
+$break-large: 1100px;
 
-$square-translation:44px;
-$square-size:40px;
+$break-xl: 1500px;
 
-$square-translation-medium:54px;
-$square-size-medium:50px;
+$square-translation: 44px;
+$square-size: 40px;
 
-$transform-time-cube: .4s;
+$square-translation-medium: 54px;
+$square-size-medium: 50px;
+
+$scale-medium : 1.1;
+$scale-large : 1.2;
+$scale-xl : 1.5;
+
 $transform-time-cube-drag: 0s;
 
 :root {
-    --white0:white;
-    --red0:red;
-    --blue0:blue;
-    --green0:green;
-    --orange0:orange;
-    --yellow0:yellow;
-    
-    --white1:white;
-    --red1:red;
-    --blue1:#14a3dc;
-    --green1:#3df749;
-    --orange1:orange;
-    --yellow1:yellow;
-    
-    --white2:white;
-    --red2:rgb(206, 96, 71);
-    --blue2:#4794b3;
-    --green2:#66c96d;
-    --orange2:rgb(210, 141, 36);
-    --yellow2:rgb(178, 178, 41);
-    
-    --background-color:#dedcd7;
-    --background-color-modal-overlay:#5b5b5b9d;
 
-    --unused_face_color:black;
-    --border_color:black;
-    
-    --btn-background-color:var(--background-color);
-    --btn-border-color:#dedcd7;
+    --white0: white;
+    --red0: red;
+    --blue0: blue;
+    --green0: green;
+    --orange0: orange;
+    --yellow0: yellow;
+    --unused_face_color0: #313131;
+    --border_color0: #000000;
+
+    --white1: white;
+    --red1: red;
+    --blue1: #14a3dc;
+    --green1: #3df749;
+    --orange1: orange;
+    --yellow1: yellow;
+
+    --white2: white;
+    --red2: rgb(206, 96, 71);
+    --blue2: #4794b3;
+    --green2: #66c96d;
+    --orange2: rgb(210, 141, 36);
+    --yellow2: rgb(178, 178, 41);
+
+    --background-color: #dedcd7;
+    --background-color-modal-overlay: #5b5b5b9d;
+
+    --btn-background-color: var(--background-color);
+    --btn-border-color: #dedcd7;
     --btn-text-color: black;
 
-    --cube-border-radius:4px;
+    --transform-time-cube0: .4s;
+
+    --unused-cube-border-radius0:4px;
+    --cube-border-radius0: 4px;
+    --space-between-cubes0 : 4px;
+
+    --square-size: 40px;
+    --square-translation: calc(var(--square-size) + var(--space-between-cubes0));
+    --minus-square-translation: calc(var(--square-translation)* -1);
+    --half-square-size: calc(var(--square-size) / 2);
+    --cube-pivot-translate: calc(var(--half-square-size) * -1);
+
+    @media only screen and (min-width: $break-medium) and (min-height: $break-medium) {
+        --square-size: 50px;
+    }
+
+    @media only screen and (min-width : $break-large) and (min-width : $break-large) {
+        --square-size: 60px;
+    }
+
+    @media only screen and (min-width : $break-xl) and (min-height : $break-medium) {
+        --square-size: 70px;
+    }
+
+    
+    @media (prefers-color-scheme: dark) {}
 }

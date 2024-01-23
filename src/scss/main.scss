@@ -4,51 +4,85 @@
 @import 'scss/ui.scss';
 @import 'scss/dialog.scss';
 
+body,
+html {
+  background-color: var(--background-color);
+  margin: 0;
+  border: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: fixed; 
+}
 
-.h1-title{
-    font-family:monospace;
-    user-select: none;
-    margin: 0 0 0 1rem ;
-    font-size:1.9rem;
-    font-weight: 500;
-  }
-  
-  @media only screen and (min-width : $break-small) {
-    .h1-title{
-      margin: 0 0 0 3rem ;
-      font-size:2.6rem;
-    }
-  }
+.scene_container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 48rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  touch-action: none;
+  position: relative;
+  overflow: hidden;
+  align-self: center;
+}
 
-  .h2-title{
-    font-family:monospace;
-    user-select: none;
-    font-size:1.4rem;
-    font-weight: 500;
-  }
-  
-  @media only screen and (min-width : $break-small) {
-    .h2-title{
-      margin: 1rem auto ;
-      font-size:1.6rem;
-      text-align: center;
-    }
-  }
+.h1-title {
+  font-family: monospace;
+  user-select: none;
+  margin: 0 0 0 1rem;
+  font-size: 1.9rem;
+  font-weight: 500;
+}
 
-  .h3-title{
-    font-family:monospace;
-    user-select: none;
-    font-size:1.2rem;
-    font-weight: 500;
-    margin: 0;
+@media only screen and (min-width : $break-small) {
+  .h1-title {
+    margin: 0 0 0 3rem;
+    font-size: 2.6rem;
   }
-  
-  @media only screen and (min-width : $break-small) {
-    .h3-title{
-      font-size:1.4rem;
-    }
+}
+
+.h2-title {
+  font-family: monospace;
+  user-select: none;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+@media only screen and (min-width : $break-small) {
+  .h2-title {
+    margin: 1rem auto;
+    font-size: 1.6rem;
+    text-align: center;
   }
-  
-.hide{
-    display: none;
+}
+
+.h3-title {
+  font-family: monospace;
+  user-select: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+@media only screen and (min-width : $break-small) {
+  .h3-title {
+    font-size: 1.4rem;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+@media only screen and (min-width : $break-large) {
+
+  .scene_container {
+      max-width: 60rem;
+  }
 }

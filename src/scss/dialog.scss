@@ -21,8 +21,12 @@
   background-color: var(--background-color);
   border: 0;
   transition: .4s all ease-in-out;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: 0px 0px 20px 20px #aaaaaa99;
+}
+
+.dialog-content {
+  margin: 1rem;
 }
 
 .dialog::backdrop {
@@ -39,7 +43,21 @@
   margin: 1rem 0;
 }
 
-.input-label {
+.input-spacing-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+.input-spacing,.input-alpha {
+  cursor: pointer;
+}
+
+.input-spacing-output {
+width: 1.2rem;
+}
+.input-label,.input-spacing-output {
   font-family: monospace;
   font-size: 1rem;
 }
@@ -51,8 +69,6 @@
 }
 
 .input-color {
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   width: 32px;
   height: 32px;
@@ -75,4 +91,82 @@
   display: flex;
   justify-content: space-evenly;
   margin-top: 2rem;
+}
+
+.randomize-btn{
+  float: right;
+  max-width: 2.5rem;
+  max-height: 2.5rem;
+  padding: 0;
+}
+
+.randomize-icon{
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (min-width : $break-medium) and (min-height : $break-medium) {
+
+  .input-spacing-container{
+    margin-bottom: 1rem;
+  }
+  .input-spacing-output {
+    width: 2.5rem;
+    }
+
+  .close-dialog {
+    max-width: 3rem;
+    max-height: 3rem;
+  }
+
+  .randomize-btn{
+    float: right;
+    max-width: 3rem;
+    max-height: 3rem;
+    
+    padding: 0;
+  }
+
+  .dialog {
+    position: absolute;
+    min-width: 500px;
+  }
+
+  .inputs-container {
+    margin: 1.5rem 0;
+  }
+
+
+  .input-color-container {
+    gap: 1.3rem;
+  }
+
+  .input-color {
+    width: 48px;
+    height: 48px;
+  }
+
+  .input-label,.input-spacing-output {
+    font-size: 1.3rem;
+  }
+
+  .btn-dialog {
+
+    font-size: 1.2rem;
+    padding: 0.7rem 1.6rem;
+  }
+}
+
+
+@media only screen and (min-width : $break-large) and (min-height : $break-large) {
+
+
+  .input-label,.input-spacing-output {
+    font-size: 1.3rem;
+  }
+
+  .btn-dialog {
+    font-size: 1.4rem;
+    padding: 0.8rem 2rem;
+  }
 }

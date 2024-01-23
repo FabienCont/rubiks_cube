@@ -52,7 +52,7 @@ var initDragAndDrop = function () {
 
   function dragStart(e) {
 
-    if (e.target === scene_container || scene_container.contains(e.target)) {
+    if (active == false && (e.target === scene_container || scene_container.contains(e.target))) {
       active = true;
 
       if (!isMoving()) {
@@ -84,22 +84,31 @@ var initDragAndDrop = function () {
         initialY = e.clientY - yOffset;
       }
 
+      
+      return false;
     }
+    e.preventDefault();
   }
 
   function dragEnd(e) {
-    dragLine = false
-    dragLineEnded()
-    dragCubeEnded()
-    applySavedPos()
-    axis = undefined
-    initialX = currentX;
-    initialY = currentY;
-    savedCubesTransform = []
-    active = false;
-    rotateMiniCube = undefined;
-    rotateMiniCubeIndex = -1;
-    cubeLines = [];
+    if (active) {
+      dragLine = false
+      dragLineEnded()
+      dragCubeEnded()
+      applySavedPos()
+      axis = undefined
+      initialX = currentX;
+      initialY = currentY;
+      savedCubesTransform = []
+      active = false;
+      rotateMiniCube = undefined;
+      rotateMiniCubeIndex = -1;
+      cubeLines = [];
+      
+      e.preventDefault();
+      return false;
+
+    }
   }
 
   function drag(e) {
@@ -119,7 +128,7 @@ var initDragAndDrop = function () {
       yOffset = currentY;
       if (!dragLine) {
         setRotate(-currentY, currentX, rubiks_cubes);
-        return
+        return false
       }
 
       /*  var vectCubeRotate=Vect3.create(rubiksCubeModel.rotateX,rubiksCubeModel.rotateY,0);
@@ -146,7 +155,7 @@ var initDragAndDrop = function () {
         if (axis) savePosLine()
       }
 
-      if (!axis) return
+      if (!axis) return false
 
       console.log("AXIS:", axis)
       var line = cubeLines.find(line => axis == line.axis).line;
@@ -172,6 +181,7 @@ var initDragAndDrop = function () {
         var index = line[c]
         addRotate(power * axisFilter[0], power * axisFilter[1], power * axisFilter[2], getCubeByPosition(index), false);
       }
+      return false
     }
   }
 }

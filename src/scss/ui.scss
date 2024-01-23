@@ -30,7 +30,6 @@
     color: var(--btn-text-color);
     box-shadow: 0px 0px 1px 1px #000000;
     cursor: pointer;
-    user-select: none;
     transition: .4s box-shadow ease-in-out;
     box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
         -6px -6px 10px rgba(255, 255, 255, .5),
@@ -79,6 +78,11 @@
     justify-content: flex-end;
 }
 
+.btn-helper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .helper-icon {
     cursor: pointer;
     max-width: 2rem;
@@ -111,7 +115,72 @@
         max-width: 2.5rem;
         max-height: 2.5rem;
     }
-    
+
 
 }
 
+
+@media only screen and (min-width : $break-medium) and (min-height : $break-medium) {
+
+    .btns_move_grid {
+        gap: 1.4rem 2rem;
+    }
+    .btns_helper_container {
+        gap: 1.5rem;
+        margin: 18px;
+    }
+
+    .btn {
+        font-size: 1.5rem;
+    }
+
+    .btn_move {
+        padding: 1rem;
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .btn_helper {
+        width: 10rem;
+        height: 3rem;
+    }
+
+    .helper-icon {
+        max-width: 2.5rem;
+        max-height: 2.5rem;
+    }
+}
+
+
+
+@media only screen and (min-width : $break-large) and (min-height : $break-large) {
+    .btns_move_grid {
+        margin-top:3rem;
+        gap: 1.8rem 2.5rem;
+    }
+
+    .btns_helper_container {
+        gap: 1.8rem;
+        margin: 2rem;
+    }
+
+    .btn {
+        font-size: 1.7rem;
+    }
+
+    .btn_move {
+        padding: 1.4rem;
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .btn_helper {
+        width: 13rem;
+        height: 3.5rem;
+    }
+
+    .helper-icon {
+        max-width: 3.5rem;
+        max-height: 3.5rem;
+    }
+}
