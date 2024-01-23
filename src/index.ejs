@@ -8,8 +8,8 @@
     <%= htmlWebpackPlugin.options.title %>
   </title>
   <link rel="stylesheet" type="text/css" href="/css/main.css">
-  <link rel=”apple-touch-icon” href="<%=require('assets/rubicsCubeFaviconx150.png')%>" sizes="150x150">
-  <link rel="icon" type="image/png" href="<%=require('assets/rubicsCubeFaviconx64.png')%>" sizes="64x364">
+  <link rel=”apple-touch-icon” href="<%=require('assets/rubicsCubeFaviconx150.png').default%>" sizes="150x150">
+  <link rel="icon" type="image/png" href="<%=require('assets/rubicsCubeFaviconx64.png').default%>" sizes="64x364">
 </head>
 
 <body>
@@ -17,21 +17,50 @@
     <h1 class="h1-title">rubiks_cube</h1>
     <div class="header-image-container">
       <a href="https://github.com/FabienCont" target="_blank">
-        <img class="image-github" src="<%=require('assets/github-mark.png')%>" alt="my github profile" />
+        <img class="image-github" src="<%= require('assets/github-mark.png').default%>" alt="my github profile" />
       </a>
     </div>
   </header>
   <div class="scene_container">
     <div class="btns_helper_container">
-      <button class="btn_helper btn_reset hide">
+      <button class="btn btn_helper btn_reset hide">
         Reset
       </button>
-      <button class="btn_helper btn_scramble">
+      <button class="btn btn_helper btn_scramble">
         Scramble
       </button>
-      <button class="btn_helper btn_center">
+      <button class="btn btn_helper btn_center">
         Center
       </button>
+      <div class="helpers-icon-container">
+        <!-- <svg class="helper-icon helper-icon-help" height="92px" version="1.1"
+          viewBox="0 0 91.999 92" width="91.999px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink">
+          <path
+            d="M45.385,0.004C19.982,0.344-0.334,21.215,0.004,46.619c0.34,25.393,21.209,45.715,46.611,45.377  c25.398-0.342,45.718-21.213,45.38-46.615C91.655,19.986,70.785-0.335,45.385,0.004z M45.249,74l-0.254-0.004  c-3.912-0.116-6.67-2.998-6.559-6.852c0.109-3.788,2.934-6.538,6.717-6.538l0.227,0.004c4.021,0.119,6.748,2.972,6.635,6.937  C51.903,71.346,49.122,74,45.249,74z M61.704,41.341c-0.92,1.307-2.943,2.93-5.492,4.916l-2.807,1.938  c-1.541,1.198-2.471,2.325-2.82,3.434c-0.275,0.873-0.41,1.104-0.434,2.88l-0.004,0.451H39.429l0.031-0.907  c0.131-3.728,0.223-5.921,1.768-7.733c2.424-2.846,7.771-6.289,7.998-6.435c0.766-0.577,1.412-1.234,1.893-1.936  c1.125-1.551,1.623-2.772,1.623-3.972c0-1.665-0.494-3.205-1.471-4.576c-0.939-1.323-2.723-1.993-5.303-1.993  c-2.559,0-4.311,0.812-5.359,2.478c-1.078,1.713-1.623,3.512-1.623,5.35v0.457H27.935l0.02-0.477  c0.285-6.769,2.701-11.643,7.178-14.487C37.946,18.918,41.446,18,45.53,18c5.346,0,9.859,1.299,13.412,3.861  c3.6,2.596,5.426,6.484,5.426,11.556C64.368,36.254,63.472,38.919,61.704,41.341z" />
+          <g />
+          <g />
+          <g />
+          <g />
+          <g />
+          <g />
+          <g />
+          <g />
+          <g />
+          <g />
+          <g />
+          <g />
+          <g />
+          <g />
+          <g />
+        </svg> -->
+        <svg class="helper-icon helper-icon-settings" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+          viewBox="0 0 50 50">
+          <path
+            d="M47.16,21.221l-5.91-0.966c-0.346-1.186-0.819-2.326-1.411-3.405l3.45-4.917c0.279-0.397,0.231-0.938-0.112-1.282 l-3.889-3.887c-0.347-0.346-0.893-0.391-1.291-0.104l-4.843,3.481c-1.089-0.602-2.239-1.08-3.432-1.427l-1.031-5.886 C28.607,2.35,28.192,2,27.706,2h-5.5c-0.49,0-0.908,0.355-0.987,0.839l-0.956,5.854c-1.2,0.345-2.352,0.818-3.437,1.412l-4.83-3.45 c-0.399-0.285-0.942-0.239-1.289,0.106L6.82,10.648c-0.343,0.343-0.391,0.883-0.112,1.28l3.399,4.863 c-0.605,1.095-1.087,2.254-1.438,3.46l-5.831,0.971c-0.482,0.08-0.836,0.498-0.836,0.986v5.5c0,0.485,0.348,0.9,0.825,0.985 l5.831,1.034c0.349,1.203,0.831,2.362,1.438,3.46l-3.441,4.813c-0.284,0.397-0.239,0.942,0.106,1.289l3.888,3.891 c0.343,0.343,0.884,0.391,1.281,0.112l4.87-3.411c1.093,0.601,2.248,1.078,3.445,1.424l0.976,5.861C21.3,47.647,21.717,48,22.206,48 h5.5c0.485,0,0.9-0.348,0.984-0.825l1.045-5.89c1.199-0.353,2.348-0.833,3.43-1.435l4.905,3.441 c0.398,0.281,0.938,0.232,1.282-0.111l3.888-3.891c0.346-0.347,0.391-0.894,0.104-1.292l-3.498-4.857 c0.593-1.08,1.064-2.222,1.407-3.408l5.918-1.039c0.479-0.084,0.827-0.5,0.827-0.985v-5.5C47.999,21.718,47.644,21.3,47.16,21.221z M25,32c-3.866,0-7-3.134-7-7c0-3.866,3.134-7,7-7s7,3.134,7,7C32,28.866,28.866,32,25,32z">
+          </path>
+        </svg>
+      </div>
     </div>
     <div class="rubiks_cube_container">
       <div class="rubiks_cube rubiks_cube_0">
@@ -57,44 +86,110 @@
     </div>
     <div class="ui_container">
       <div class="btns_move_grid">
-        <button class="btn_move" data-id="U">
+        <button class="btn btn_move" data-id="U">
           U
         </button>
-        <button class="btn_move" data-id="U'">
+        <button class="btn btn_move" data-id="U'">
           U'
         </button>
-        <button class="btn_move" data-id="D">
+        <button class="btn btn_move" data-id="D">
           D
         </button>
-        <button class="btn_move" data-id="D'">
+        <button class="btn btn_move" data-id="D'">
           D'
         </button>
-        <button class="btn_move" data-id="F">
+        <button class="btn btn_move" data-id="F">
           F
         </button>
-        <button class="btn_move" data-id="F'">
+        <button class="btn btn_move" data-id="F'">
           F'
         </button>
-        <button class="btn_move" data-id="B">
+        <button class="btn btn_move" data-id="B">
           B
         </button>
-        <button class="btn_move" data-id="B'">
+        <button class="btn btn_move" data-id="B'">
           B'
         </button>
-        <button class="btn_move" data-id="R">
+        <button class="btn btn_move" data-id="R">
           R
         </button>
-        <button class="btn_move" data-id="R'">
+        <button class="btn btn_move" data-id="R'">
           R'
         </button>
-        <button class="btn_move" data-id="L">
+        <button class="btn btn_move" data-id="L">
           L
         </button>
-        <button class="btn_move" data-id="L'">
+        <button class="btn btn_move" data-id="L'">
           L'
         </button>
+
+        <button class="btn btn_move" data-id="X">
+          X
+        </button>
+        <button class="btn btn_move" data-id="X'">
+          X'
+        </button>
+        <button class="btn btn_move" data-id="Y">
+          Y
+        </button>
+        <button class="btn btn_move" data-id="Y'">
+          Y'
+        </button>
+        <button class="btn btn_move" data-id="Z">
+          Z
+        </button>
+        <button class="btn btn_move" data-id="Z'">
+          Z'
+        </button>
+
       </div>
     </div>
+  </div>
+  <div class="dialog-container">
+    <dialog class="dialog" data-id="settings">
+      <button class="close-dialog" aria-label="close">
+        <svg
+          height="16px"  width="16px" version="1.1" viewBox="0 0 512 512"
+          xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink">
+          <path
+            d="M443.6,387.1L312.4,255.4l131.5-130c5.4-5.4,5.4-14.2,0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4  L256,197.8L124.9,68.3c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4L68,105.9c-5.4,5.4-5.4,14.2,0,19.6l131.5,130L68.4,387.1  c-2.6,2.6-4.1,6.1-4.1,9.8c0,3.7,1.4,7.2,4.1,9.8l37.4,37.6c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1L256,313.1l130.7,131.1  c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1l37.4-37.6c2.6-2.6,4.1-6.1,4.1-9.8C447.7,393.2,446.2,389.7,443.6,387.1z" />
+        </svg>
+      </button>
+      <h2 class="h2-title">Settings</h2>
+      <h3 class="h3-title">Colors:</h2>
+        <div class="inputs-container">
+          <div class="input-color-container">
+            <input class="input-color" type="color" id="white" name="white" value="#ffffff" />
+            <label class="input-label" for="white">white</label>
+          </div>
+          <div class="input-color-container">
+            <input class="input-color" type="color" id="blue" name="blue" value="#0000ff" />
+            <label class="input-label" for="blue">Blue</label>
+          </div>
+          <div class="input-color-container">
+            <input class="input-color" type="color" id="red" name="red" value="#ff0000" />
+            <label class="input-label" for="red">Red</label>
+          </div>
+          <div class="input-color-container">
+            <input class="input-color" type="color" id="yellow" name="yellow" value="#ffff00" />
+            <label class="input-label" for="yellow">Yellow</label>
+          </div>
+          <div class="input-color-container">
+            <input class="input-color" type="color" id="green" name="green" value="#008000" />
+            <label class="input-label" for="green">Green</label>
+          </div>
+          <div class="input-color-container">
+            <input class="input-color" type="color" id="orange" name="orange" value="#ffa500" />
+            <label class="input-label" for="orange">Orange</label>
+          </div>
+
+        </div>
+        <div class="btns-dialog-container">
+          <button class="btn dialog-settings-btn-save">Save</button>
+          <button class="btn dialog-settings-btn-reset">Reset</button>
+        </div>
+    </dialog>
   </div>
 </body>
 

@@ -1,8 +1,8 @@
-import { isMoving,startDrag, setRotate, addRotate, getCubeByPosition, setRotate3DMiniCube } from 'js/cubeController';
+import { isMoving, setRotate, addRotate, getCubeByPosition, setRotate3DMiniCube } from 'js/cubeController';
 import { rubiksCubeModel } from 'js/model/rubiksCubeModel';
 import { findCubeLines } from "js/model/find";
-import { getMatrix4FromDom, mat4ToRotation } from '../utils/mat4';
-import { dragEnded, dragStarted } from '../cubeController';
+import { getMatrix4FromDom, mat4ToRotation } from 'js/utils/mat4';
+import { dragLineEnded, dragLineStarted, dragCubeEnded, dragCubeStarted } from 'js/cubeController';
 
 var initDragAndDrop = function () {
   var scene_container = document.querySelector(".scene_container");
@@ -22,6 +22,7 @@ var initDragAndDrop = function () {
   var yOffset = 0;
   var axis
   var savedCubesTransform = []
+  var dragLine = false;
 
   scene_container.addEventListener("touchstart", dragStart, false);
   scene_container.addEventListener("touchend", dragEnd, false);
@@ -64,13 +65,14 @@ var initDragAndDrop = function () {
         }
       }
 
-      if (rotateMiniCube && rotateMiniCubeIndex != -1) {
+      if (rotateMiniCube && rotateMiniCubeIndex != -1 && !isMoving() && false) {
+        dragLine = true
         xOffset = 0;
         yOffset = 0;
         cubeLines = findCubeLines(rotateMiniCubeIndex);
-        dragStarted(true)
+        dragLineStarted(true)
       } else {
-        dragStarted(false)
+        dragCubeStarted(false)
         xOffset = rubiksCubeModel.rotateY;
         yOffset = -rubiksCubeModel.rotateX;
       }
@@ -86,7 +88,9 @@ var initDragAndDrop = function () {
   }
 
   function dragEnd(e) {
-    dragEnded()
+    dragLine = false
+    dragLineEnded()
+    dragCubeEnded()
     applySavedPos()
     axis = undefined
     initialX = currentX;
@@ -113,7 +117,7 @@ var initDragAndDrop = function () {
 
       xOffset = currentX;
       yOffset = currentY;
-      if (!rotateMiniCube) {
+      if (!dragLine) {
         setRotate(-currentY, currentX, rubiks_cubes);
         return
       }

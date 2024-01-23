@@ -35,6 +35,7 @@ const getMiniCubePositionContainerByPosition=function(cube,position){
 const getMiniCubeFaces=function(miniCubeContainer){
   miniCubeContainer.querySelectorAll(".cube_face");
 }
+
 export {getSceneContainer,
 getRubiksCubesByNumber,
 getRubiksCubes,

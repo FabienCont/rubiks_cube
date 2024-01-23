@@ -1,9 +1,54 @@
-@import 'variables.scss';
-@import 'rubiks.scss';
-@import 'header.scss';
-@import 'ui.scss';
+@import 'scss/variables.scss';
+@import 'scss/rubiks.scss';
+@import 'scss/header.scss';
+@import 'scss/ui.scss';
+@import 'scss/dialog.scss';
 
 
+.h1-title{
+    font-family:monospace;
+    user-select: none;
+    margin: 0 0 0 1rem ;
+    font-size:1.9rem;
+    font-weight: 500;
+  }
+  
+  @media only screen and (min-width : $break-small) {
+    .h1-title{
+      margin: 0 0 0 3rem ;
+      font-size:2.6rem;
+    }
+  }
+
+  .h2-title{
+    font-family:monospace;
+    user-select: none;
+    font-size:1.4rem;
+    font-weight: 500;
+  }
+  
+  @media only screen and (min-width : $break-small) {
+    .h2-title{
+      margin: 1rem auto ;
+      font-size:1.6rem;
+      text-align: center;
+    }
+  }
+
+  .h3-title{
+    font-family:monospace;
+    user-select: none;
+    font-size:1.2rem;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  @media only screen and (min-width : $break-small) {
+    .h3-title{
+      font-size:1.4rem;
+    }
+  }
+  
 .hide{
     display: none;
 }

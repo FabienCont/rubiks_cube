@@ -1,36 +1,45 @@
 $break-small: 600px;
 $break-large: 1200px;
 
-$square-translation:48px;
-$square-size:32px;
+$square-translation:44px;
+$square-size:40px;
 
 $square-translation-medium:64px;
-$square-size-medium:48px;
+$square-size-medium:58px;
 
 $transform-time-cube: .4s;
 $transform-time-cube-drag: 0s;
 
-$white0:white;
-$red0:red;
-$blue0:blue;
-$green0:green;
-$orange0:orange;
-$yellow0:yellow;
+:root {
+    --white0:white;
+    --red0:red;
+    --blue0:blue;
+    --green0:green;
+    --orange0:orange;
+    --yellow0:yellow;
+    
+    --white1:white;
+    --red1:red;
+    --blue1:#14a3dc;
+    --green1:#3df749;
+    --orange1:orange;
+    --yellow1:yellow;
+    
+    --white2:white;
+    --red2:rgb(206, 96, 71);
+    --blue2:#4794b3;
+    --green2:#66c96d;
+    --orange2:rgb(210, 141, 36);
+    --yellow2:rgb(178, 178, 41);
+    
+    --background-color:#dedcd7;
+    --background-color-modal-overlay:#5b5b5b9d;
 
-$white1:white;
-$red1:red;
-$blue1:#14a3dc;
-$green1:#3df749;
-$orange1:orange;
-$yellow1:yellow;
+    --unused_face_color:black;
+    --border_color:black;
+    
+    --btn-background-color:var(--background-color);
+    --btn-border-color:#dedcd7;
+    --btn-text-color: black;
 
-$white2:white;
-$red2:rgb(206, 96, 71);
-$blue2:#4794b3;
-$green2:#66c96d;
-$orange2:rgb(210, 141, 36);
-$yellow2:rgb(178, 178, 41);
-
-$background-color:#f3f3f3;
-$unused_face_color:black;
-$border_color:black;$border_color:black;
+}

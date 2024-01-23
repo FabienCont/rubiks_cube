@@ -7,37 +7,49 @@
 }
 
 
-.btns_helper_container{
+.btns_helper_container {
     position: absolute;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
     margin: 12px;
     top: 0px;
     right: 0;
-    z-index:1000;
+    z-index: 1000;
 }
 
-.btn_helper{
+.btn {
     font-family: sans-serif;
-    border: 2px solid #ffffff80;
-    border-radius: 2%;
-    background: dimgrey;
+    //border: 2px solid (--btn-border-color);
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--btn-background-color);
     font-weight: 500;
     font-size: 1rem;
     padding: 0.4rem;
-    color: #f4f4f4;
+    color: var(--btn-text-color);
     box-shadow: 0px 0px 1px 1px #000000;
     cursor: pointer;
     user-select: none;
+    transition: .4s box-shadow ease-in-out;
+    box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+        -6px -6px 10px rgba(255, 255, 255, .5),
+        6px 6px 8px rgba(255, 255, 255, .075),
+        6px 6px 10px rgba(0, 0, 0, .15);
 }
 
-.btn_helper:hover {
-    background: rgb(87, 87, 87);
+.btn:hover {
+    box-shadow: -2px -2px 6px rgba(255, 255, 255, .6),
+        -2px -2px 4px rgba(255, 255, 255, .4),
+        2px 2px 2px rgba(255, 255, 255, .05),
+        2px 2px 4px rgba(0, 0, 0, .1);
 }
 
-.btn_helper:active {
-    background: rgb(152, 151, 151);
+.btn:active {
+    box-shadow: inset -2px -2px 6px rgba(255, 255, 255, .7),
+        inset -2px -2px 4px rgba(255, 255, 255, .5),
+        inset 2px 2px 2px rgba(255, 255, 255, .075),
+        inset 2px 2px 4px rgba(0, 0, 0, .15);
 }
 
 .btns_move_grid {
@@ -50,48 +62,56 @@
 
 
 .btn_move {
-    font-family: sans-serif;
-    border: 2px solid #ffffff80;
-    border-radius: 12%;
-    background: dimgrey;
-    font-weight: 500;
-    font-size: 1rem;
     width: 2.4rem;
     height: 2.4rem;
-    color: #f4f4f4;
-    box-shadow: 0px 0px 2px 2px #000000;
-    cursor: pointer;
+}
+
+.btn_helper {
+    width: 6rem;
+    height: 2.2rem;
+}
+
+
+.helpers-icon-container {
     user-select: none;
+    display: flex;
+    // justify-content: space-evenly;
+    justify-content: flex-end;
 }
 
-.btn_move:hover {
-    background: rgb(87, 87, 87);
+.helper-icon {
+    cursor: pointer;
+    max-width: 2rem;
+    max-height: 2rem;
 }
-
-.btn_move:active {
-    background: rgb(152, 151, 151);
-}
-
 
 @media only screen and (min-width : $break-small) {
-    .ui_container {
-        justify-content: flex-start;
-        align-items: center;
+
+    .btns_helper_container {
+        gap: 1.2rem;
+        margin: 18px;
     }
 
-    .btns_helper_container{
-        left: 0;
-        right: auto;
+    .btn {
+        font-size: 1.2rem;
     }
-    .btns_move_grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
 
     .btn_move {
-        font-size: 1.4rem;
-        padding: 0.6rem;
+        padding: 0.8rem;
         width: 3rem;
         height: 3rem;
     }
+
+    .btn_helper {
+        width: 8rem;
+        height: 2.6rem;
+    }
+
+    .helper-icon {
+        max-width: 2.5rem;
+        max-height: 2.5rem;
+    }
+    
+
 }
+

@@ -1,13 +1,14 @@
 import { rubiksCubeModel } from 'js/model/rubiksCubeModel'
 import { deg2rad, eulerToQuaternion } from 'js/utils/angle'
 import { isInBackFace, isInDownFace, isInFrontFace, isInLeftFace, isInRightFace, isInUpFace, isInEquatorFace, isInMiddleFace, isInStandingFace } from 'js/model/predicates'
-import { createIdentityMat4, mat4Multiply, mat4FromQuat, getMatrix4FromDom, applyQuaternionToMat4 } from './utils/mat4'
-import { generateScrambleSequence } from './utils/scrambler'
-import { updateButtonDisplay } from './inputs/buttons'
+import { createIdentityMat4, mat4Multiply, mat4FromQuat, getMatrix4FromDom, applyQuaternionToMat4, mat4ToRotation } from 'js/utils/mat4'
+import { generateScrambleSequence } from 'js/utils/scrambler'
+import { updateButtonDisplay } from 'js/inputs/buttons'
 
 const cubes_infos = []
 const queue_moves = []
 let cubes_in_transition = 0
+let lineIsMoving = false
 let lineDragged = false
 const initCube = function () {
   var cubes = document.querySelectorAll(".cube_container");
@@ -50,19 +51,45 @@ const isMoving = function () {
 }
 const finishTransition = function () {
   cubes_in_transition -= 1
+  if(cubes_in_transition == 0){
+    lineIsMoving = false
+  }
+  
+  if(queue_moves.length == 0 && cubes_in_transition == 0 && lineIsMoving == false ){
+    updateButtonDisplay(isSolved())
+  }
+  
   startNextMove()
+
 }
-const dragStarted = function (isLine) {
+
+const dragCubeStarted = function (isLine) {
   var rubiks_cubes = getRubiksCube()
-  rubiks_cubes.classList.add("drag")
+  rubiks_cubes.classList.add("drag-cube")
   if (isLine) {
     lineDragged = true
   }
 }
 
-const dragEnded = function () {
+const dragCubeEnded = function () {
   var rubiks_cubes = getRubiksCube()
-  rubiks_cubes.classList.remove("drag")
+  rubiks_cubes.classList.remove("drag-cube")
+  if (lineDragged) {
+    lineDragged = false
+  }
+}
+
+const dragLineStarted = function (isLine) {
+  var rubiks_cubes = getRubiksCube()
+  rubiks_cubes.classList.add("drag-line")
+  if (isLine) {
+    lineDragged = true
+  }
+}
+
+const dragLineEnded = function () {
+  var rubiks_cubes = getRubiksCube()
+  rubiks_cubes.classList.remove("drag-line")
   if (lineDragged) {
     lineDragged = false
   }
@@ -128,18 +155,27 @@ const applyMat4TransformToStyle = function (el, mat4) {
 
 function isSolved() {
   let solved = true
+
+  let cube = cubes_infos[0].cube
+  var rotationFirstCube = mat4ToRotation(getMatrix4FromDom(cube))
+  var quat = eulerToQuaternion(deg2rad(rotationFirstCube.x), deg2rad(rotationFirstCube.y), deg2rad(rotationFirstCube.z))
+  var mat4Rotation = mat4FromQuat(createIdentityMat4(), quat)
+
   for (let i = 0; i < cubes_infos.length; i++) {
     let cubeInfo = cubes_infos[i]
-    if (cubeInfo.cube.dataset.pos != cubeInfo.cube.dataset.posInit) {
-      solved = false;
-      4
-      break
+    let  mat4=getMatrix4FromDom(cubeInfo.cube)
+    let mat4Rotated = mat4Multiply(createIdentityMat4(),mat4,mat4Rotation)
+    let  rotate = mat4ToRotation(mat4Rotated)
+    if (Math.round(rotate.x) != 0 || Math.round(rotate.y) != 0 || Math.round(rotate.z) != 0) {
+          solved = false;
+          break
     }
   }
 
+
   return solved
 }
-
+window.test = () =>  console.log(isSolved())
 
 const rotateTablePosCounterClockwise = [
   2,
@@ -240,7 +276,7 @@ const move = function(move){
 const moveLine = function (move,sign) {
   let { newPosDico, signToUpdatePos } = computeSimpleMove(move, sign)
   updatePos(newPosDico, signToUpdatePos)
-  updateButtonDisplay(isSolved())
+  lineIsMoving = true
 }
 
 const rotateCube = function (move,sign) {
@@ -349,4 +385,7 @@ const addSequence = function (sequence) {
   startNextMove()
 }
 
-export { initCube, resetCube, getCubeByPosition, setRotate, dragEnded, dragStarted, addRotate, centerCube, scramble, setRotate3DMiniCube, move, isMoving, addSequence };
+window.exportCubePos = function(){
+  console.log(JSON.stringify(cubes_infos.map(cubeInfo=>cubeInfo.cube.dataset.posInit)))
+}
+export { initCube, resetCube, getCubeByPosition, setRotate, dragLineEnded, dragLineStarted,dragCubeEnded, dragCubeStarted, addRotate, centerCube, scramble, setRotate3DMiniCube, move, isMoving, addSequence };

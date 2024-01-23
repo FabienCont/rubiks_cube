@@ -1,10 +1,14 @@
 import { move,centerCube,scramble,resetCube } from 'js/cubeController';
 import { solve } from 'js/utils/solver';
+import { openSettings } from '../view/settings';
+import { addEventListenerToNode, block_event } from "../utils/domEventHelper"
+
 export const initClickButtons = () => {
     initClickMove()
     initClickScramble()
     initClickCenter()
     initClickReset()
+    initClickIconSetting()
     //initClickSolve()
 }
 
@@ -28,16 +32,17 @@ const hide = function(elem){
 const show = function (elem){
     if (elem.classList.contains("hide"))elem.classList.remove("hide")
 }
-const addEventListenerToNode = function (node, eventHandler) {
-    node.addEventListener("touchstart", eventHandler, false);
-    node.addEventListener("mousedown", eventHandler, false);
-}
 
 const initClickMove = () => {
     let nodes = document.querySelectorAll(".btn_move")
     nodes.forEach(node => {
         addEventListenerToNode(node, clickMove)
     })
+}
+
+const initClickIconSetting = () => {
+    let node = document.querySelector(".helper-icon-settings")
+    addEventListenerToNode(node, clickSettingIcon)
 }
 
 const initClickReset = () => {
@@ -60,10 +65,8 @@ const initClickScramble = () => {
     addEventListenerToNode(node, clickScramble)
 }
 
-const block_event = function (event) {
-    event.stopPropagation()
-    event.preventDefault()
-    return false;
+const clickSettingIcon = function() {
+    openSettings()
 }
 
 const clickReset = function(event){
