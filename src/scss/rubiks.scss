@@ -94,12 +94,14 @@ html {
     @if $i<9 {
       .cube_container_#{$i} .cube_face_3 {
         background-color: var(--white0);
+        border-radius: var(--cube-border-radius);
       }
     }
 
     @if $i%9<3 {
       .cube_container_#{$i} .cube_face_0 {
         background-color: var(--red0) !important;
+        border-radius: var(--cube-border-radius);
       }
     }
 
@@ -107,24 +109,28 @@ html {
     @if ($i +1)%3==0 {
       .cube_container_#{$i} .cube_face_4 {
         background-color: var(--blue0);
+        border-radius: var(--cube-border-radius);
       }
     }
 
     @if ($i)%3==0 {
       .cube_container_#{$i} .cube_face_2 {
         background-color: var(--green0);
+        border-radius: var(--cube-border-radius);
       }
     }
 
     @if $i %9>5 {
       .cube_container_#{$i} .cube_face_5 {
         background-color: var(--orange0);
+        border-radius: var(--cube-border-radius);
       }
     }
 
     @if $i>17 {
       .cube_container_#{$i} .cube_face_1 {
         background-color: var(--yellow0);
+        border-radius: var(--cube-border-radius);
       }
     }
   }
@@ -298,8 +304,7 @@ html {
   border: 1px solid var(--border_color);
   box-sizing: border-box;
   background-color: var(--unused_face_color);
-  border-radius: px;
-  backface-visibility: hidden;
+  backface-visibility: visible;
 }
 
 
