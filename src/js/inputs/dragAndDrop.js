@@ -24,9 +24,9 @@ var initDragAndDrop = function () {
   var savedCubesTransform = []
   var dragLine = false;
 
-  scene_container.addEventListener("touchstart", dragStart, {passive:true});
-  scene_container.addEventListener("touchend", dragEnd, {passive:true});
-  scene_container.addEventListener("touchmove", drag, {passive:true});
+  scene_container.addEventListener("touchstart", dragStart, false);
+  scene_container.addEventListener("touchend", dragEnd, false);
+  scene_container.addEventListener("touchmove", drag, false);
 
   scene_container.addEventListener("mousedown", dragStart, false);
   scene_container.addEventListener("mouseup", dragEnd, false);
