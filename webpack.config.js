@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = (env, argv) => {
   if (argv.mode === 'production') {
@@ -14,6 +15,15 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         title: 'RubiksCube',
         template: path.resolve(__dirname, 'src', 'index.ejs')
+      }),
+      new CopyPlugin({
+        patterns: [
+          { from: "./src/assets/github-mark.png", to: "" },
+          { from: "./src/assets/manifest.json", to: "" },
+          { from: "./src/assets/rubicsCubeFaviconx150.png", to: "" },
+          { from: "./src/assets/rubicsCubeFaviconx96.png", to: "" },
+          { from: "./src/assets/rubicsCubeFaviconx64.png", to: "" },
+        ],
       })
     ],
     output: {
