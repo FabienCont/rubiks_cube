@@ -4,14 +4,13 @@ export const parseColorCss = (colorCss) => {
 
 var canvas = document.createElement('canvas');
 canvas.width = canvas.height = 1;
-var ctx = canvas.getContext('2d');
+var ctx = canvas.getContext('2d',{ willReadFrequently: true });
 
 
 const rgba2hex = function (rgba) {
     let hex = (rgba[0] | 1 << 8).toString(16).slice(1) +
             (rgba[1] | 1 << 8).toString(16).slice(1) +
             (rgba[2] | 1 << 8).toString(16).slice(1);
-    console.log(hex);
     return "#"+hex;
 }
 

@@ -1,7 +1,7 @@
 export const addEventListenerToNode = function (node, eventHandler) {
-    node.addEventListener("touchstart", block_event, false);
+    node.addEventListener("touchstart", block_event, {passive:true});
     node.addEventListener("mousedown", block_event, false);
-    node.addEventListener("touchend", eventHandler, false);
+    node.addEventListener("touchend", eventHandler, {passive:true});
     node.addEventListener("mouseup", eventHandler, false);
 }
 

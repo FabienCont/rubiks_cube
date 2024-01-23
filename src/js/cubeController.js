@@ -171,11 +171,8 @@ function isSolved() {
           break
     }
   }
-
-
   return solved
 }
-window.test = () =>  console.log(isSolved())
 
 const rotateTablePosCounterClockwise = [
   2,
@@ -290,7 +287,6 @@ const rotateCube = function (move,sign) {
 const rotateCubesbyPredicate = function (predicate, x, y, z) {
   let newPosDico = []
   var cubesInfos = getCubeByPredicates(predicate)
-  console.log(cubesInfos.length)
   cubesInfos.forEach(cubesInfo => {
     addRotate(x, y, z, cubesInfo.cube)
     newPosDico.push(cubesInfo)
@@ -383,9 +379,5 @@ const addSequence = function (sequence) {
     queue_moves.push(move)
   }
   startNextMove()
-}
-
-window.exportCubePos = function(){
-  console.log(JSON.stringify(cubes_infos.map(cubeInfo=>cubeInfo.cube.dataset.posInit)))
 }
 export { initCube, resetCube, getCubeByPosition, setRotate, dragLineEnded, dragLineStarted,dragCubeEnded, dragCubeStarted, addRotate, centerCube, scramble, setRotate3DMiniCube, move, isMoving, addSequence };

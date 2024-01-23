@@ -58,7 +58,6 @@ const saveDefaultValues = function () {
     inputsColor.forEach(input => {
         var nameCss = getCssVariableNameById(input.id)
         var value =getCssVariable(nameCss)
-        console.log(nameCss,value);
         defaultValues[nameCss] = parseColorCss(value)
     });
 }
