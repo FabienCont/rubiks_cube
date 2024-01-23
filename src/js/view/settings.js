@@ -2,7 +2,7 @@ import { parseColorCss } from "js/utils/color"
 import { showDialog, closeDialog, getDialogById } from "js/utils/dialog"
 import { addEventListenerToNode, block_event } from "js/utils/domEventHelper"
 import { setCssVariable, getCssVariable } from "js/utils/varCssHelper"
-import { getLocalStorageItem,setLocalStorageItem } from "js/utils/localStorage"
+import { getLocalStorageItem, setLocalStorageItem } from "js/utils/localStorage"
 
 const colorLocalStorageKey = "colors-settings"
 const dialog = getDialogById("settings")
@@ -19,20 +19,21 @@ const initSettings = function () {
     loadSavedSettings()
 }
 
-const loadSavedSettings = function(){
+const loadSavedSettings = function () {
     var colors = getLocalStorageItem(colorLocalStorageKey)
-    if (colors){
+    if (colors) {
         inputsColor.forEach(input => {
             var nameCss = getCssVariableNameById(input.id)
-            if(colors[nameCss]){
+            if (colors[nameCss]) {
                 setCssVariable(nameCss, colors[nameCss])
+                input.value = colors[nameCss]
             }
         })
     }
 }
 
-const saveColorsToLocalStorage=function(colors){
-    setLocalStorageItem(colorLocalStorageKey,colors)
+const saveColorsToLocalStorage = function (colors) {
+    setLocalStorageItem(colorLocalStorageKey, colors)
 }
 
 const initClickClose = function () {
@@ -57,13 +58,13 @@ const openSettings = function () {
 const saveDefaultValues = function () {
     inputsColor.forEach(input => {
         var nameCss = getCssVariableNameById(input.id)
-        var value =getCssVariable(nameCss)
+        var value = getCssVariable(nameCss)
         defaultValues[nameCss] = parseColorCss(value)
     });
 }
 
 const save = function () {
-    var colors= {}
+    var colors = {}
     inputsColor.forEach(input => {
         var nameCss = getCssVariableNameById(input.id)
         setCssVariable(nameCss, input.value)
