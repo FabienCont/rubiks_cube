@@ -18,10 +18,7 @@ module.exports = (env, argv) => {
       }),
       new CopyPlugin({
         patterns: [
-          { from: "./src/assets/manifest.json", to: "" },
-          { from: "./src/assets/rubicsCubeFaviconx150.png", to: "" },
-          { from: "./src/assets/rubicsCubeFaviconx96.png", to: "" },
-          { from: "./src/assets/rubicsCubeFaviconx64.png", to: "" },
+          { from: "./src/assets/", to: "" },
         ],
       })
     ],
